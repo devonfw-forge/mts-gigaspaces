@@ -13,7 +13,6 @@ Installation Steps
 * Download the latest release of devonfw-ide from  https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz[here] or alternatively from devonfw https://devonfw.com/website/pages/welcome/welcome.html[Homepage]. Create a central folder like C:\projects or /projects. Inside this folder, create a sub-folder for your new project such as my-project and extract the contents of the downloaded archive (devonfw-ide-scripts-*.tar.gz) and send them to this new folder. Run the command setup in this folder (on windows double clicking on setup.bat). 
 * Clone the mts-gigaspaces project from above and place it inside the new automatically generated folder called workspaces. E.g. C:\projects\my-project\workspaces\main.
 * Download GigaSpaces InsightEdge Smart Cache from the following https://www.gigaspaces.com/downloads/[link]. Select the Enterprise Edition for Java. After fullfiling your personal information a license key will be sent via email.
-* Unzip the GigaSpaces InsightEdge und open the gs-license.txt File. 
-* Copy the license key (sent per email) in the gs-license.txt File.
+* Unzip the GigaSpaces InsightEdge und open the gs-license.txt File. Copy the license key (sent per email) in the gs-license.txt File.
 +
-image:license.png[alt="not bad.",width=128,height=128]
+image::images/license.png[, link="images/license.png"]
