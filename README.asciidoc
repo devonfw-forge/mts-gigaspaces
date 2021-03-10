@@ -50,6 +50,11 @@ Import Apache Zeppelin Notes
 * Press "Import Note" than "Choose a JSON here" and import the 3 Json Files iteratively.
 * The machine learning use cases are realised with Apache Spark. This tool needs to know how the Entities used by My Thai Star are defined. This can be achieved by creating .jar Files for the *core* and *api* projects of *mtsj*.
 * Add the 2 Jar files to Spark's jars folder. E.g. Downloads\gigaspaces-insightedge-enterprise-15.5.1\insightedge\spark\jars
+* In addition you need at least Python 3.7 on your machine. Some additional modules are also required for python, those can be installed via a package installer like *pip*:
++
+```shell
+pip install findspark numpy pandas pmdarima pyspark
+```
 * *Remark*: Before using the prediction use case, it is needed to generate the prediction models first. This can be done by simply running the NextWeekPrediction-Generate ARIMA Models Note from Apache Zeppelin. New models need to be generated once a day.  
 
 Run the My Thai Star Application
