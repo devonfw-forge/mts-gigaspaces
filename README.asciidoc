@@ -16,3 +16,32 @@ Installation Steps
 * Unzip the GigaSpaces InsightEdge und open the gs-license.txt File. Copy the license key (sent per email) in the gs-license.txt File.
 +
 image::images/license.png[, link="images/license.png"]
+
+Start the GigaSpaces Data Grid
+------------------------------
+* Open a command terminal and navigate to the *bin* folder of the GigaSpaces InsightEdge. E.g. Downloads\gigaspaces-insightedge-enterprise-15.5.1\bin
+* Enter the following command to start the services and create 4 Grid Service Containers which will hold the Processing Units: 
++
+```shell
+gs host run-agent --auto --gsc=4
+```
+
+* For this project Data Only PU were used. You can find more about Processing Units https://docs.gigaspaces.com/latest/started/xap-tutorial-part5.html[here].
+* Once all the services started, a new browser window will open leading to the main GigaSpaces UI.
+* To store the Data we need to deploy a Space. Space is equivalent to a Database Schema. This can be done via UI by clicking *deploy* from the top-left corner, and select space.
+* Input the following parameters:
++
+image::images/space_deployment.png[, link="images/space_deployment.png"]
+* This will deploy a Space called "CG-space", with 2 Instances and each instance will have 1 Backup Instance, means 4 Instances in total. Because in the previous step 4 GSC were created, this configuration is possible. *Remark*: It is not possible to deploy more Instances than available Containers.
+
+* Alternatively you can deploy a Space by packaging the mtsj-space project in a .jar file and deploy it via UI as a Processing Unit. The project contains inside the `resources\META-INF\spring`  folder 2 files (pu.xml, sla.xml) with the configuration of the space.  
+
+Populate the Space with Data
+-----------------------------
+* In order to add the sample data into the space, you need to import the *datafeeder* in your IDE and run it with the following VM Arguments:
++
+image::images/run_datafeeder.png[, link="images/run_datafeeder.png"]
+* Adjust the groups version (xap-15.5.1) to match your version of GigaSpaces.
+
+Import Apache Zeppelin Notes
+----------------------------
