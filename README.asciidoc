@@ -31,7 +31,7 @@ gs host run-agent --auto --gsc=4
 * To store the Data we need to deploy a Space. Space is equivalent to a Database Schema. This can be done via UI by clicking *deploy* from the top-left corner, and select space.
 * Input the following parameters:
 +
-image::images/space_deployment.png[, link="images/space_deployment.png"]
+image::images/space_deployment.png[, link="images/space_deployment.png", scaledwidth="65%"]
 * This will deploy a Space called "CG-space", with 2 Instances and each instance will have 1 Backup Instance, means 4 Instances in total. Because in the previous step 4 GSC were created, this configuration is possible. *Remark*: It is not possible to deploy more Instances than available Containers.
 
 * Alternatively you can deploy a Space by packaging the mtsj-space project in a .jar file and deploy it via UI as a Processing Unit. The project contains inside the `resources\META-INF\spring`  folder 2 files (pu.xml, sla.xml) with the configuration of the space.  
