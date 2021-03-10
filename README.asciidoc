@@ -1,6 +1,6 @@
 = mts-gigaspaces
 
-This section contains instructions in order to use the My Thai Star Application together with https://www.gigaspaces.com/products/xap/[GigaSpaces InsightEdge]. GigaSpaces’ industry-leading in-memory data grid, XAP, delivers high performance, resiliency and ultra-low latency extreme transactional and stream processing for mission-critical applications at the leading enterprises worldwide.
+This section contains instructions in order to use the My Thai Star Application together with https://www.gigaspaces.com/products/xap/[GigaSpaces InsightEdge^]. GigaSpaces’ industry-leading in-memory data grid, XAP, delivers high performance, resiliency and ultra-low latency extreme transactional and stream processing for mission-critical applications at the leading enterprises worldwide.
     
 Remark
 ~~~~~~~
@@ -10,9 +10,9 @@ This project serves just as proof of concept and will not be maintained or updat
 Installation Steps
 ------------------
 
-* Download the latest release of devonfw-ide from  https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz[here] or alternatively from devonfw https://devonfw.com/website/pages/welcome/welcome.html[Homepage]. Create a central folder like C:\projects or /projects. Inside this folder, create a sub-folder for your new project such as my-project and extract the contents of the downloaded archive (devonfw-ide-scripts-*.tar.gz) and send them to this new folder. Run the command setup in this folder (on windows double clicking on setup.bat). 
+* Download the latest release of devonfw-ide from  https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz[here] or alternatively from devonfw https://devonfw.com/website/pages/welcome/welcome.html[Homepage^]. Create a central folder like C:\projects or /projects. Inside this folder, create a sub-folder for your new project such as my-project and extract the contents of the downloaded archive (devonfw-ide-scripts-*.tar.gz) and send them to this new folder. Run the command setup in this folder (on windows double clicking on setup.bat). 
 * Clone the mts-gigaspaces project from above and place it inside the new automatically generated folder called workspaces. E.g. C:\projects\my-project\workspaces\main.
-* Download GigaSpaces InsightEdge Smart Cache from the following https://www.gigaspaces.com/downloads/[link]. Select the Enterprise Edition for Java. After fullfiling your personal information a license key will be sent via email.
+* Download GigaSpaces InsightEdge Smart Cache from the following https://www.gigaspaces.com/downloads/[link^]. Select the Enterprise Edition for Java. After fullfiling your personal information a license key will be sent via email.
 * Unzip the GigaSpaces InsightEdge und open the gs-license.txt File. Copy the license key (sent per email) in the gs-license.txt File.
 +
 image::images/license.png[, link="images/license.png"]
@@ -26,7 +26,7 @@ Start the GigaSpaces Data Grid
 gs host run-agent --auto --gsc=4
 ```
 
-* For this project Data Only PU were used. You can find more about Processing Units https://docs.gigaspaces.com/latest/started/xap-tutorial-part5.html[here].
+* For this project Data Only PU were used. You can find more about Processing Units https://docs.gigaspaces.com/latest/started/xap-tutorial-part5.html[here^].
 * Once all the services started, a new browser window will open leading to the main GigaSpaces UI.
 * To store the Data we need to deploy a Space. Space is equivalent to a Database Schema. This can be done via UI by clicking *deploy* from the top-left corner, and select space.
 * Input the following parameters:
@@ -45,3 +45,11 @@ image::images/run_datafeeder.png[, link="images/run_datafeeder.png"]
 
 Import Apache Zeppelin Notes
 ----------------------------
+* To enable the 2 machine learning uses cases of My Thai Star, you need to import the 3 Json Files from the *Apache Zeppelin Notes* Folder of this repository into Apache Zeppelin.
+* Apache Zeppelin can be accesed via: https://localhost:9090[^] 
+* Press "Import Note" than "Choose a JSON here" and import the 3 Json Files interatively.
+* The machine learning use cases are realised with Apache Spark. This tool needs to know how the Entities used by My Thai Star are defined. This can be achieved by creating .jar Files for the *core* and *api* projects of *mtsj*.
+* Add the 2 Jar files to Spark's jars folder. E.g. Downloads\gigaspaces-insightedge-enterprise-15.5.1\insightedge\spark\jars
+* *Remark*: Before using the prediction use case, it is needed to generate the prediction models first. This can be done by simply running the NextWeekPrediction-Generate ARIMA Models Note from Apache Zeppelin. New models need to be generated once a day.  
+
+
