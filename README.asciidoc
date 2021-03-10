@@ -52,4 +52,18 @@ Import Apache Zeppelin Notes
 * Add the 2 Jar files to Spark's jars folder. E.g. Downloads\gigaspaces-insightedge-enterprise-15.5.1\insightedge\spark\jars
 * *Remark*: Before using the prediction use case, it is needed to generate the prediction models first. This can be done by simply running the NextWeekPrediction-Generate ARIMA Models Note from Apache Zeppelin. New models need to be generated once a day.  
 
+Run the My Thai Star Application
+--------------------------------
+* Firstly, open a command terminal and navigate to the *spring-data-gigaspaces* folder of this repository and run following command: 
++
+```shell
+mvn clean install
+```
+* Import the *mtsj* project in your IDE and run the `mtsj/core/src/main/java/com/devonfw/application/mtsj/SpringBootApp.java` class. This will start the Backend of the My Thai Star.
+* To start the Frontend of the Application, navigate to the *angular* folder of this repository, press right-click and choose "Open devonfw CMD shell here". 
+* In the newly opened terminal enter following command:
++
+```shell
+ng serve -o
+```
 
