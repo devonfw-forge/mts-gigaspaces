@@ -1,71 +1,72 @@
+:toc: macro
+toc::[]
+
 = mts-gigaspaces
 
 This section contains instructions in order to use the My Thai Star Application together with https://www.gigaspaces.com/products/xap/[GigaSpaces InsightEdge^]. GigaSpaces’ industry-leading in-memory data grid, XAP, delivers high performance, resiliency and ultra-low latency extreme transactional and stream processing for mission-critical applications at the leading enterprises worldwide.
     
-Remark
-~~~~~~~
-This project serves just as proof of concept and will not be maintained or updated to match the newest version of the used technologies.
+== Attention
 
+NOTE: This project serves just as proof of concept and will not be maintained or updated to match the newest version of the used technologies.
 
-Installation Steps
-------------------
+== Installation Steps
 
-* Download the latest release of devonfw-ide from  https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz[here] or alternatively from devonfw https://devonfw.com/website/pages/welcome/welcome.html[Homepage^]. Create a central folder like C:\projects or /projects. Inside this folder, create a sub-folder for your new project such as my-project and extract the contents of the downloaded archive (devonfw-ide-scripts-*.tar.gz) and send them to this new folder. Run the command setup in this folder (on windows double clicking on setup.bat). 
-* Clone the mts-gigaspaces project from above and place it inside the new automatically generated folder called workspaces. E.g. C:\projects\my-project\workspaces\main.
-* Download GigaSpaces InsightEdge Smart Cache from the following https://www.gigaspaces.com/downloads/[link^]. Select the Enterprise Edition for Java. After fullfiling your personal information a license key will be sent via email.
-* Unzip the GigaSpaces InsightEdge und open the gs-license.txt File. Copy the license key (sent per email) in the gs-license.txt File.
+- Download the latest release of devonfw-ide from  https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.devonfw.tools.ide&a=devonfw-ide-scripts&v=LATEST&p=tar.gz[here] or alternatively from devonfw https://devonfw.com/website/pages/welcome/welcome.html[Homepage^]. Create a central folder like C:\projects or /projects. Inside this folder, create a sub-folder for your new project such as my-project and extract the contents of the downloaded archive (devonfw-ide-scripts-*.tar.gz) and send them to this new folder. Run the command setup in this folder (on windows double clicking on setup.bat). 
+- Clone the mts-gigaspaces project from above and place it inside the new automatically generated folder called workspaces. E.g. C:\projects\my-project\workspaces\main.
+- Download GigaSpaces InsightEdge Smart Cache from the following https://www.gigaspaces.com/downloads/[link^]. Select the Enterprise Edition for Java. After fullfiling your personal information a license key will be sent via email.
+- Unzip the GigaSpaces InsightEdge und open the gs-license.txt File. Copy the license key (sent per email) in the gs-license.txt File.
 +
 image::images/license.png[, link="images/license.png"]
 
-Start the GigaSpaces Data Grid
-------------------------------
-* Open a command terminal and navigate to the *bin* folder of the GigaSpaces InsightEdge. E.g. Downloads\gigaspaces-insightedge-enterprise-15.5.1\bin
-* Enter the following command to start the services and create 4 Grid Service Containers which will hold the Processing Units: 
+== Start the GigaSpaces Data Grid
+
+- Open a command terminal and navigate to the *bin* folder of the GigaSpaces InsightEdge. E.g. Downloads\gigaspaces-insightedge-enterprise-15.5.1\bin
+- Enter the following command to start the services and create 4 Grid Service Containers which will hold the Processing Units: 
 +
 ```shell
 gs host run-agent --auto --gsc=4
 ```
 
-* For this project Data Only PU were used. You can find more about Processing Units https://docs.gigaspaces.com/latest/started/xap-tutorial-part5.html[here^].
-* Once all the services started, a new browser window will open leading to the main GigaSpaces UI.
-* To store the Data we need to deploy a Space. Space is equivalent to a Database Schema. This can be done via UI by clicking *deploy* from the top-left corner, and select space.
-* Input the following parameters:
+- For this project Data Only PU were used. You can find more about Processing Units https://docs.gigaspaces.com/latest/started/xap-tutorial-part5.html[here^].
+- Once all the services started, a new browser window will open leading to the main GigaSpaces UI.
+- To store the Data we need to deploy a Space. Space is equivalent to a Database Schema. This can be done via UI by clicking *deploy* from the top-left corner, and select space.
+- Input the following parameters:
 +
 image::images/space_deployment.png[, link="images/space_deployment.png"]
-* This will deploy a Space called "CG-space", with 2 Instances and each instance will have 1 Backup Instance, means 4 Instances in total. Because in the previous step 4 GSC were created, this configuration is possible. *Remark*: It is not possible to deploy more Instances than available Containers.
+- This will deploy a Space called "CG-space", with 2 Instances and each instance will have 1 Backup Instance, means 4 Instances in total. Because in the previous step 4 GSC were created, this configuration is possible. *Remark*: It is not possible to deploy more Instances than available Containers.
 
-* Alternatively you can deploy a Space by packaging the mtsj-space project in a .jar file and deploy it via UI as a Processing Unit. The project contains inside the `resources\META-INF\spring`  folder 2 files (pu.xml, sla.xml) with the configuration of the space.  
+- Alternatively you can deploy a Space by packaging the mtsj-space project in a .jar file and deploy it via UI as a Processing Unit. The project contains inside the `resources\META-INF\spring`  folder 2 files (pu.xml, sla.xml) with the configuration of the space.  
 
-Populate the Space with Data
------------------------------
-* In order to add the sample data into the space, you need to import the *datafeeder* in your IDE and run it with the following VM Arguments:
+== Populate the Space with Data
+
+- In order to add the sample data into the space, you need to import the *datafeeder* in your IDE and run it with the following VM Arguments:
 +
 image::images/run_datafeeder.png[, link="images/run_datafeeder.png"]
-* Adjust the groups version (xap-15.5.1) to match your version of GigaSpaces.
+- Adjust the groups version (xap-15.5.1) to match your version of GigaSpaces.
 
-Import Apache Zeppelin Notes
-----------------------------
-* To enable the 2 machine learning uses cases of My Thai Star, you need to import the 3 Json Files from the *Apache Zeppelin Notes* Folder of this repository into Apache Zeppelin.
-* Apache Zeppelin can be accesed via: https://localhost:9090[^] 
-* Press "Import Note" than "Choose a JSON here" and import the 3 Json Files iteratively.
-* The machine learning use cases are realised with Apache Spark. This tool needs to know how the Entities used by My Thai Star are defined. This can be achieved by creating .jar Files for the *core* and *api* projects of *mtsj*.
-* Add the 2 Jar files to Spark's jars folder. E.g. Downloads\gigaspaces-insightedge-enterprise-15.5.1\insightedge\spark\jars
-* In addition you need at least Python 3.7 on your machine. Some additional modules are also required for python, those can be installed via a package installer like *pip*:
+== Import Apache Zeppelin Notes
+
+- To enable the 2 machine learning uses cases of My Thai Star, you need to import the 3 Json Files from the *Apache Zeppelin Notes* Folder of this repository into Apache Zeppelin.
+- Apache Zeppelin can be accesed via: https://localhost:9090[^] 
+- Press "Import Note" than "Choose a JSON here" and import the 3 Json Files iteratively.
+- The machine learning use cases are realised with Apache Spark. This tool needs to know how the Entities used by My Thai Star are defined. This can be achieved by creating .jar Files for the *core* and *api* projects of *mtsj*.
+- Add the 2 Jar files to Spark's jars folder. E.g. Downloads\gigaspaces-insightedge-enterprise-15.5.1\insightedge\spark\jars
+- In addition you need at least Python 3.7 on your machine. Some additional modules are also required for python, those can be installed via a package installer like *pip*:
 +
 ```shell
 pip install findspark numpy pandas pmdarima pyspark
 ```
-* *Remark*: Before using the prediction use case, it is needed to generate the prediction models first. This can be done by simply running the NextWeekPrediction-Generate ARIMA Models Note from Apache Zeppelin. New models need to be generated once a day.  
+- *Remark*: Before using the prediction use case, it is needed to generate the prediction models first. This can be done by simply running the NextWeekPrediction-Generate ARIMA Models Note from Apache Zeppelin. New models need to be generated once a day.  
 
-Run the My Thai Star Application
---------------------------------
+== Run the My Thai Star Application
+
 * Firstly, open a command terminal and navigate to the *spring-data-gigaspaces* folder of this repository and run following command: 
 +
 ```shell
 mvn clean install
 ```
-* Import the *mtsj* project in your IDE and run the `mtsj/core/src/main/java/com/devonfw/application/mtsj/SpringBootApp.java` class. This will start the Backend of the My Thai Star.
-* To start the Frontend of the Application, navigate to the *angular* folder of this repository, press right-click and choose "Open devonfw CMD shell here". 
+- Import the *mtsj* project in your IDE and run the `mtsj/core/src/main/java/com/devonfw/application/mtsj/SpringBootApp.java` class. This will start the Backend of the My Thai Star.
+- To start the Frontend of the Application, navigate to the *angular* folder of this repository, press right-click and choose "Open devonfw CMD shell here". 
 * In the newly opened terminal enter following command:
 +
 ```shell
