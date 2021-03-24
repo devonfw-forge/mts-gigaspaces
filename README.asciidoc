@@ -3,7 +3,7 @@ toc::[]
 
 = mts-gigaspaces
 
-This section contains instructions in order to use the My Thai Star Application together with https://www.gigaspaces.com/products/xap/[GigaSpaces InsightEdge^]. GigaSpaces’ industry-leading in-memory data grid, XAP, delivers high performance, resiliency and ultra-low latency extreme transactional and stream processing for mission-critical applications at the leading enterprises worldwide.
+This section contains instructions in order to use the My Thai Star Application together with https://www.gigaspaces.com/products/xap/[GigaSpaces InsightEdge Smart Cache^]. GigaSpaces’ industry-leading in-memory data grid, XAP, delivers high performance, resiliency and ultra-low latency extreme transactional and stream processing for mission-critical applications at the leading enterprises worldwide.
     
 == Attention
 
