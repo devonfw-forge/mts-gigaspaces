@@ -175,7 +175,7 @@ describe('UserAreaService', () => {
 
   it('UserService Pairing', () => {
     userAreaService.pairing().subscribe((twoFactor: TwoFactorResponse) => {
-      expect(twoFactor.secret).toBe('***REMOVED***');
+      expect(twoFactor.secret).toBe('**REMOVED**');
     });
     const req = httpTestingController.expectOne(
       config.restServiceRoot + 'usermanagement/v1/user/pairing/capgemini',
@@ -184,7 +184,7 @@ describe('UserAreaService', () => {
     req.flush({
       twoFactorStatus: false,
       base64QrCode: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUg=',
-      secret: '***REMOVED***',
+      secret: '**REMOVED**',
     });
   });
 
@@ -218,7 +218,7 @@ describe('UserAreaService', () => {
     req.flush({
       twoFactorStatus: true,
       base64QrCode: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUg=',
-      secret: '***REMOVED***',
+      secret: '**REMOVED**',
     });
   });
 

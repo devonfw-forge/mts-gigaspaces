@@ -19,6 +19,6 @@ export class UserDetailsTestData {
 
   static loadQrCodeData = {
     base64QrCode: 'data:image/png;base64,iVBORw0KGgoAA=',
-    secret: '***REMOVED***',
+    secret: ' ',
   };
 }
